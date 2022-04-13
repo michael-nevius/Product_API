@@ -20,7 +20,7 @@ def products_list(request):
 
 @api_view(['GET', 'PUT', 'DELETE'])    
 def product_detail(request, pk):
-    product = get_object_or_404(product,pk=pk)
+    product = get_object_or_404(Product,pk=pk)
     if request.method == 'GET':
         serializer = ProductSerializer(product);
         return Response(serializer.data)
