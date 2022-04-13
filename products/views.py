@@ -8,7 +8,7 @@ from .models import Product
 @api_view(['GET', 'POST'])
 def products_list(request):
     if request.method == 'GET':
-        products = products.objects.all()
+        products = Product.objects.all()
         serilizer = ProductSerializer(products, many=True)   
         return Response(serilizer.data)
 
