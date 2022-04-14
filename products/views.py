@@ -9,14 +9,14 @@ from .models import Product
 def products_list(request):
     if request.method == 'GET':
         products = Product.objects.all()
-        serilizer = ProductSerializer(products, many=True)   
-        return Response(serilizer.data)
+        serializer = ProductSerializer(products, many=True)   
+        return Response(serializer.data)
 
     elif request.method == 'POST':
-        serilizer = ProductSerializer(data=request.data)
-        serilizer.is_valid(raise_exception=True)
-        serilizer.save()
-        return Response(serilizer.data, status=status.HTTP_201_CREATED)
+        serializer = ProductSerializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
 
 @api_view(['GET', 'PUT', 'DELETE'])    
 def product_detail(request, pk):
